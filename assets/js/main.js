@@ -43,4 +43,58 @@ if(hero){
   }, {threshold:.2});
   io2.observe(hero);
 }
+
+const contactForm = document.querySelector('#contactForm');
+if (contactForm) {
+  const submitBtn = document.querySelector('#contactSubmitBtn');
+  const statusBox = document.querySelector('#formStatus');
+  const formWrap = document.querySelector('#contactFormWrap');
+  const successCard = document.querySelector('#formSuccessCard');
+  const resetBtn = document.querySelector('#resetContactForm');
+
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (statusBox) {
+      statusBox.textContent = '';
+      statusBox.className = 'form-status';
+    }
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      contactForm.reset();
+      formWrap?.classList.add('d-none');
+      successCard?.classList.remove('d-none');
+    } catch (error) {
+      if (statusBox) {
+        statusBox.textContent = 'Message could not be sent right now. Please try again in a moment or contact us on WhatsApp.';
+        statusBox.className = 'form-status show error';
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    successCard?.classList.add('d-none');
+    formWrap?.classList.remove('d-none');
+    contactForm.reset();
+  });
+}
+
 window.addEventListener('load', ()=> document.querySelector('.glass-nav')?.classList.toggle('scrolled', window.scrollY > 24));
