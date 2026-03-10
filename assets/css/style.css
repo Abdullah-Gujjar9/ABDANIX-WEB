@@ -33,7 +33,7 @@ a{text-decoration:none}
 }
 .navbar.glass-nav{
   position:fixed;top:0;left:0;width:100%;z-index:1100;
-  padding:4px 0;
+  padding:2px 0;
   background:rgba(6,11,22,.35);
   border-bottom:1px solid rgba(255,255,255,.05);
   backdrop-filter: blur(14px);
@@ -44,18 +44,18 @@ a{text-decoration:none}
   background:rgba(6,11,22,.75);
   box-shadow:0 10px 30px rgba(0,0,0,.25);
   border-bottom-color:rgba(255,255,255,.08);
-  padding:5px 0;
+  padding:3px 0;
 }
 .navbar-brand{display:flex;align-items:center;gap:8px;color:#fff!important;font-weight:800;letter-spacing:.4px;margin-left:-8px}
 .brand-logo{
-  width:74px;
-  height:74px;
+  width:64px;
+  height:64px;
   object-fit:contain;
   mix-blend-mode:screen;
   opacity:.98;
   filter: drop-shadow(0 10px 20px rgba(34,211,238,.12));
 }
-.brand-text{font-size:1.38rem;line-height:1}
+.brand-text{font-size:1.2rem;line-height:1}
 .brand-text .dot{color:var(--cyan)}
 .navbar .nav-link{color:#dbeafe!important;font-weight:500;margin-left:8px;position:relative;transition:.2s}
 .navbar .nav-link:hover,.navbar .nav-link.active{color:#fff!important}
@@ -210,14 +210,100 @@ a{text-decoration:none}
 .process-num{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,#3b82f6,#22d3ee);box-shadow:0 10px 20px rgba(59,130,246,.22);margin-bottom:12px}
 .process-card h5{font-weight:700}.process-card p{margin:0;color:#64748b}
 
+.team-card{
+  height:100%;
+  padding:24px 20px 18px;
+  text-align:center;
+  color:#fff;
+  border-radius:30px;
+  border:1px solid rgba(59,130,246,.16);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(59,130,246,.1), transparent 38%),
+    linear-gradient(135deg,#121212,#1a1a1a 45%,#141414 100%);
+  box-shadow:0 20px 45px rgba(2,6,23,.18);
+}
+.team-avatar{
+  width:124px;
+  height:124px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid rgba(37,99,235,.32);
+  box-shadow:0 0 0 8px rgba(15,23,42,.45), 0 18px 36px rgba(0,0,0,.35);
+}
+.team-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:grayscale(100%);
+}
+.team-photo-danish{
+  transform:scale(1.12);
+  object-position:center 28%;
+}
+.team-photo-abdullah{
+  transform:scale(1.02) translateY(8px);
+  object-position:center 32%;
+}
+.team-photo-jamshaid{
+  transform:scale(1.18);
+  object-position:center 18%;
+}
+.team-photo-eshan{
+  transform:scale(1.22);
+  object-position:center 20%;
+}
+.team-card h5{
+  font-size:1rem;
+  font-weight:800;
+  margin-bottom:8px;
+}
+.team-role{
+  margin-bottom:12px;
+  color:#2563eb;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:.76rem;
+  font-weight:700;
+}
+.team-card p{
+  color:rgba(226,232,240,.72);
+  font-size:.9rem;
+  line-height:1.55;
+  min-height:84px;
+  margin-bottom:18px;
+}
+.team-socials{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+.team-socials a{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#0d6efd;
+  background:rgba(13,110,253,.08);
+  border:1px solid rgba(13,110,253,.28);
+  transition:transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.team-socials a:hover{
+  transform:translateY(-2px);
+  background:rgba(13,110,253,.16);
+  border-color:rgba(13,110,253,.45);
+}
+
 .page-hero{
   position:relative; overflow:hidden; color:#fff;
-  margin-top:78px;
+  margin-top:56px;
   background:
     radial-gradient(circle at 15% 18%, rgba(59,130,246,.24), transparent 40%),
     radial-gradient(circle at 85% 18%, rgba(6,182,212,.18), transparent 42%),
     linear-gradient(90deg,#06153a 0%, #030f28 38%, #021828 70%, #012535 100%);
-  padding:86px 0 68px;
+  padding:74px 0 62px;
   text-align:center;
 }
 .page-hero::before{
@@ -299,11 +385,13 @@ footer a:hover{color:#fff}
   .btn-nav{margin-top:10px;display:inline-block;width:100%;text-align:center}
   .hero{min-height:auto}
   .hero-inner{padding:36px 0 52px}
-  .page-hero{margin-top:66px;padding:74px 0 58px}
+  .page-hero{margin-top:52px;padding:66px 0 52px}
   .tech-track{animation-duration:18s}
-  .brand-logo{width:60px;height:60px}
-  .brand-text{font-size:1.08rem}
+  .brand-logo{width:52px;height:52px}
+  .brand-text{font-size:1rem}
   .navbar-brand{margin-left:-4px}
+  .team-avatar{width:104px;height:104px}
+  .team-card p{min-height:auto}
 }
 
 @media (prefers-reduced-motion:reduce){
