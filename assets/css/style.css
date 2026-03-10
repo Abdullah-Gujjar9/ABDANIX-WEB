@@ -212,7 +212,7 @@ a{text-decoration:none}
 
 .team-card{
   height:100%;
-  padding:24px 20px 18px;
+  padding:14px 20px 18px;
   text-align:center;
   color:#fff;
   border-radius:30px;
@@ -225,7 +225,7 @@ a{text-decoration:none}
 .team-avatar{
   width:124px;
   height:124px;
-  margin:0 auto 18px;
+  margin:0 auto 14px;
   border-radius:50%;
   overflow:hidden;
   border:4px solid rgba(37,99,235,.32);
@@ -243,7 +243,7 @@ a{text-decoration:none}
   object-position:center 28%;
 }
 .team-photo-abdullah{
-  transform:scale(1.02) translateY(2px);
+  transform:scale(1.16) translateY(0);
   object-position:center 32%;
 }
 .team-photo-jamshaid{
