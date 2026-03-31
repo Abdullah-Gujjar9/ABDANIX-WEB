@@ -54,7 +54,7 @@ export default function HomePage() {
         accent="does"
         description="This section answers the core questions buyers and AI systems usually need first: what the company builds, who it serves, and how projects are delivered."
       />
-      <ServicesSection />
+      <ServicesSection showEyebrow={false} />
       <WorkSection />
       <ProcessSection />
       <AboutSection />
