@@ -4,7 +4,7 @@ import {
   DEFAULT_OG_IMAGE,
   SITE_NAME,
   absoluteUrl,
-  organizationSchema,
+  getSeoSchemaEntries,
 } from "../data/seoData";
 
 function upsertMeta(attribute, key, content) {
@@ -36,19 +36,6 @@ function upsertLink(rel, href) {
   }
 
   element.setAttribute("href", href);
-}
-
-function buildBreadcrumbSchema(items) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: absoluteUrl(item.path),
-    })),
-  };
 }
 
 export default function Seo({
@@ -94,11 +81,7 @@ export default function Seo({
       .querySelectorAll('script[data-seo-managed="true"]')
       .forEach((element) => element.remove());
 
-    const schemaEntries = [
-      organizationSchema,
-      ...(Array.isArray(schema) ? schema : [schema]),
-      breadcrumbs.length ? buildBreadcrumbSchema(breadcrumbs) : null,
-    ].filter(Boolean);
+    const schemaEntries = getSeoSchemaEntries({ schema, breadcrumbs });
 
     schemaEntries.forEach((entry) => {
       const script = document.createElement("script");

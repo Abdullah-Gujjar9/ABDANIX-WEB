@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageHero from "../components/PageHero";
 import Seo from "../components/Seo";
+import { FaqSection, contactFaqs } from "../components/Sections";
 import { seoPages } from "../data/seoData";
 
 function ContactInfoIcon({ type }) {
@@ -128,6 +129,12 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <FaqSection
+        title="Contact and discovery"
+        accent="questions"
+        description="This helps visitors understand what to send, how the team responds, and which channels are available before the first conversation starts."
+        faqs={contactFaqs}
+      />
     </>
   );
 }

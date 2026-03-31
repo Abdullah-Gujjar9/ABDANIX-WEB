@@ -1,3 +1,12 @@
+import {
+  contactFaqs,
+  homeFaqs,
+  projects,
+  projectsFaqs,
+  services,
+  servicesFaqs,
+} from "./siteData.js";
+
 export const SITE_NAME = "ABDANIX SOLUTIONS";
 export const SITE_URL = "https://www.abdanixsolutions.com";
 export const DEFAULT_OG_IMAGE = "/assets/images/hero-showcase-reference.png";
@@ -22,6 +31,14 @@ export function absoluteUrl(pathname = "/") {
   return `${SITE_URL}${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
 }
 
+function buildServiceAnchor(service) {
+  return absoluteUrl(`/services#service-${service.code.toLowerCase()}`);
+}
+
+function buildProjectAnchor(project) {
+  return absoluteUrl(`/projects#project-${project.id}`);
+}
+
 function buildWebPageSchema({ path, name, description, type = "WebPage" }) {
   return {
     "@context": "https://schema.org",
@@ -31,6 +48,98 @@ function buildWebPageSchema({ path, name, description, type = "WebPage" }) {
     url: absoluteUrl(path),
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": ORGANIZATION_ID },
+  };
+}
+
+export function buildBreadcrumbSchema(items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+function buildFaqSchema({ path, name, faqs }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    name,
+    url: absoluteUrl(path),
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+function buildOfferCatalog(items) {
+  return {
+    "@type": "OfferCatalog",
+    name: "ABDANIX Services Catalog",
+    itemListElement: items.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.title,
+        serviceType: service.title,
+        description: service.description,
+        provider: { "@id": ORGANIZATION_ID },
+        areaServed: "Worldwide",
+        url: buildServiceAnchor(service),
+      },
+    })),
+  };
+}
+
+function buildServiceCatalogSchema({ path, name, items }) {
+  return {
+    "@context": "https://schema.org",
+    ...buildOfferCatalog(items),
+    name,
+    url: absoluteUrl(path),
+  };
+}
+
+function buildProjectItemListSchema({ path, name, items }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    url: absoluteUrl(path),
+    itemListElement: items.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.description,
+        genre: project.category,
+        keywords: project.tags.join(", "),
+        url: buildProjectAnchor(project),
+      },
+    })),
+  };
+}
+
+function buildContactPoint() {
+  return {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: "info@abdanixsolutions.com",
+    telephone: "+92 324 116 2060",
+    areaServed: "Worldwide",
+    availableLanguage: ["English"],
+    url: absoluteUrl("/contact"),
   };
 }
 
@@ -52,7 +161,19 @@ export const organizationSchema = {
     addressLocality: "Rawalpindi / Islamabad",
     addressCountry: "PK",
   },
+  contactPoint: [buildContactPoint()],
   sameAs: socialLinks,
+  knowsAbout: [
+    "Website Development",
+    "Mobile App Development",
+    "CRM Systems",
+    "Custom Software Engineering",
+    "Search Engine Optimization",
+    "Generative Engine Optimization",
+    "AI Integration",
+    "Workflow Automation",
+  ],
+  hasOfferCatalog: buildOfferCatalog(services),
   serviceType: [
     "Website Development",
     "Mobile App Development",
@@ -74,6 +195,14 @@ const websiteSchema = {
   inLanguage: "en",
 };
 
+export function getSeoSchemaEntries({ schema = [], breadcrumbs = [] }) {
+  return [
+    organizationSchema,
+    ...(Array.isArray(schema) ? schema : [schema]),
+    breadcrumbs.length ? buildBreadcrumbSchema(breadcrumbs) : null,
+  ].filter(Boolean);
+}
+
 export const seoPages = {
   home: {
     title: "ABDANIX SOLUTIONS | Web Development, Apps, CRM & AI Solutions",
@@ -91,6 +220,16 @@ export const seoPages = {
         name: "ABDANIX SOLUTIONS",
         description:
           "Premium websites, apps, CRM systems, and AI-enabled business solutions for modern organizations.",
+      }),
+      buildServiceCatalogSchema({
+        path: "/services",
+        name: "ABDANIX Solutions Service Catalog",
+        items: services,
+      }),
+      buildFaqSchema({
+        path: "/",
+        name: "ABDANIX Solutions FAQ",
+        faqs: homeFaqs,
       }),
     ],
   },
@@ -119,6 +258,16 @@ export const seoPages = {
         description:
           "Integrated digital services built to support business growth, automation, scalability, and stronger online performance.",
       },
+      buildServiceCatalogSchema({
+        path: "/services",
+        name: "ABDANIX Services",
+        items: services,
+      }),
+      buildFaqSchema({
+        path: "/services",
+        name: "ABDANIX Services FAQ",
+        faqs: servicesFaqs,
+      }),
       buildWebPageSchema({
         path: "/services",
         name: "ABDANIX Services",
@@ -162,6 +311,16 @@ export const seoPages = {
           name,
         })),
       },
+      buildProjectItemListSchema({
+        path: "/projects",
+        name: "ABDANIX Project Portfolio",
+        items: projects,
+      }),
+      buildFaqSchema({
+        path: "/projects",
+        name: "ABDANIX Projects FAQ",
+        faqs: projectsFaqs,
+      }),
       buildWebPageSchema({
         path: "/projects",
         name: "ABDANIX Projects",
@@ -215,6 +374,16 @@ export const seoPages = {
         url: absoluteUrl("/contact"),
         mainEntity: { "@id": ORGANIZATION_ID },
       },
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPoint",
+        ...buildContactPoint(),
+      },
+      buildFaqSchema({
+        path: "/contact",
+        name: "ABDANIX Contact FAQ",
+        faqs: contactFaqs,
+      }),
     ],
   },
   privacy: {
@@ -278,3 +447,14 @@ export const seoPages = {
     ],
   },
 };
+
+export const prerenderPages = [
+  { path: "/", seo: seoPages.home },
+  { path: "/services", seo: seoPages.services },
+  { path: "/projects", seo: seoPages.projects },
+  { path: "/about", seo: seoPages.about },
+  { path: "/contact", seo: seoPages.contact },
+  { path: "/privacy", seo: seoPages.privacy },
+  { path: "/terms", seo: seoPages.terms },
+  { path: "/404", seo: seoPages.notFound, fileName: "404.html" },
+];

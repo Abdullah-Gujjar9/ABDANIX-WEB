@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
-import { AboutSection, CtaSection, ProcessSection, ServicesSection, WorkSection } from "../components/Sections";
+import {
+  AboutSection,
+  AnswerGridSection,
+  CtaSection,
+  FaqSection,
+  ProcessSection,
+  ServicesSection,
+  WorkSection,
+} from "../components/Sections";
 import { seoPages } from "../data/seoData";
 
 export default function HomePage() {
@@ -40,10 +48,21 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <AnswerGridSection
+        eyebrow="What We Build"
+        title="What ABDANIX Solutions"
+        accent="does"
+        description="This section answers the core questions buyers and AI systems usually need first: what the company builds, who it serves, and how projects are delivered."
+      />
       <ServicesSection />
       <WorkSection />
       <ProcessSection />
       <AboutSection />
+      <FaqSection
+        title="Common questions about"
+        accent="ABDANIX"
+        description="These answers summarize the company, its services, delivery model, and contact path in a format that is easier to quote, compare, and understand."
+      />
       <CtaSection />
     </>
   );

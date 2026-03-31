@@ -2,9 +2,16 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   aboutPoints,
+  contactFaqs,
+  homeAnswerCards,
+  homeFaqs,
   portfolioFilters,
+  projectAnswerCards,
   projects,
+  projectsFaqs,
   services,
+  servicesAnswerCards,
+  servicesFaqs,
   steps,
   technologies,
   team,
@@ -263,6 +270,7 @@ function PortfolioSectionInner({ introAligned = "center", showEyebrow = true }) 
           <article
             className={`portfolio-card${project.featured ? " featured" : ""}`}
             key={project.title}
+            id={`project-${project.id}`}
           >
             <div className="portfolio-card-glow"></div>
             <div className="portfolio-media">
@@ -327,6 +335,64 @@ function PortfolioSectionInner({ introAligned = "center", showEyebrow = true }) 
   );
 }
 
+export function AnswerGridSection({
+  eyebrow = "Direct Answers",
+  title = "What ABDANIX",
+  accent = "delivers",
+  description = "Clear answers make it easier for buyers, search engines, and AI systems to understand the company and its capabilities.",
+  items = homeAnswerCards,
+}) {
+  return (
+    <section className="section editorial-section answer-section">
+      <div className="container">
+        <div className="section-heading center reveal show">
+          <div className="eyebrow"><span className="dot"></span>{eyebrow}</div>
+          <h2>{title} <span className="accent-text">{accent}</span></h2>
+          <p>{description}</p>
+        </div>
+
+        <div className="grid answer-grid">
+          {items.map((item) => (
+            <article className="answer-card reveal show" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function FaqSection({
+  eyebrow = "FAQ",
+  title = "Questions clients ask",
+  accent = "before starting",
+  description = "Straightforward answers help visitors qualify themselves faster and make the service offering easier to cite and summarize.",
+  faqs = homeFaqs,
+}) {
+  return (
+    <section className="section editorial-section faq-section">
+      <div className="container">
+        <div className="section-heading center reveal show">
+          <div className="eyebrow"><span className="dot"></span>{eyebrow}</div>
+          <h2>{title} <span className="accent-text">{accent}</span></h2>
+          <p>{description}</p>
+        </div>
+
+        <div className="faq-list reveal show">
+          {faqs.map((faq, index) => (
+            <details className="faq-item" key={faq.question} open={index === 0}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ServicesSection({ compact = false, showEyebrow = true }) {
   const items = compact ? services : services;
   return (
@@ -341,7 +407,11 @@ export function ServicesSection({ compact = false, showEyebrow = true }) {
         </div>
         <div className="grid services-grid">
           {items.map((service) => (
-            <article className="card service-card reveal show" key={service.title}>
+            <article
+              className="card service-card reveal show"
+              key={service.title}
+              id={`service-${service.code.toLowerCase()}`}
+            >
               <div className="icon-badge">{service.code}</div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
@@ -559,3 +629,11 @@ export function CtaSection({
     </section>
   );
 }
+
+export {
+  contactFaqs,
+  projectAnswerCards,
+  projectsFaqs,
+  servicesAnswerCards,
+  servicesFaqs,
+};

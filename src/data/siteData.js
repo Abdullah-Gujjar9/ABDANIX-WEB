@@ -31,8 +31,8 @@ export const services = [
     code: "SEO",
     title: "SEO Optimization",
     description:
-      "Technical SEO, on-page content structure and performance improvements designed to grow rankings and inbound traffic.",
-    tags: ["Analytics", "CWV", "Search"],
+      "Technical SEO, structured content, schema, and search visibility improvements designed to grow rankings, inbound traffic, and AI answer discoverability.",
+    tags: ["Analytics", "CWV", "Schema"],
   },
   {
     code: "ML",
@@ -54,6 +54,157 @@ export const services = [
     description:
       "Strategic content planning, creative publishing and audience engagement that build authority across the right channels.",
     tags: ["Content", "Growth", "Strategy"],
+  },
+];
+
+export const homeAnswerCards = [
+  {
+    title: "What ABDANIX Solutions does",
+    description:
+      "ABDANIX Solutions is a software development company that builds websites, mobile apps, CRM systems, custom software, and AI-enabled business workflows for growth-focused teams.",
+  },
+  {
+    title: "Who we work with",
+    description:
+      "We support startups, service businesses, operations teams, and established companies that need dependable delivery, clearer systems, and scalable digital infrastructure.",
+  },
+  {
+    title: "How projects are delivered",
+    description:
+      "Each engagement moves through discovery, architecture, execution, and optimization so strategy, engineering, and commercial priorities stay aligned from the start.",
+  },
+];
+
+export const servicesAnswerCards = [
+  {
+    title: "Website and product delivery",
+    description:
+      "We build marketing websites, web platforms, client portals, and mobile apps with performance, usability, and conversion goals built into the delivery process.",
+  },
+  {
+    title: "Business systems and CRM workflows",
+    description:
+      "ABDANIX designs internal tools, CRM flows, automation logic, and reporting systems that help teams manage leads, operations, and day-to-day execution.",
+  },
+  {
+    title: "AI, SEO, and post-launch improvement",
+    description:
+      "We support technical SEO, AI integrations, automation journeys, and ongoing optimization so the system keeps improving after launch.",
+  },
+];
+
+export const projectAnswerCards = [
+  {
+    title: "What the portfolio shows",
+    description:
+      "The project library highlights ABDANIX experience across enterprise CRM platforms, customer support systems, AI automation products, and mobile applications.",
+  },
+  {
+    title: "How similar projects start",
+    description:
+      "Clients usually begin with a discovery call focused on business goals, user roles, workflow constraints, integrations, and delivery priorities.",
+  },
+  {
+    title: "What a custom build includes",
+    description:
+      "A custom engagement can include architecture planning, UI implementation, backend systems, integrations, analytics, automation, and launch support.",
+  },
+];
+
+export const homeFaqs = [
+  {
+    question: "What does ABDANIX Solutions do?",
+    answer:
+      "ABDANIX Solutions builds websites, mobile apps, CRM systems, custom software, SEO improvements, and AI-enabled business solutions for companies that need practical digital delivery.",
+  },
+  {
+    question: "Does ABDANIX build custom CRM systems?",
+    answer:
+      "Yes. ABDANIX designs CRM workflows, pipeline management systems, lead routing logic, reporting dashboards, and automation tailored to each business process.",
+  },
+  {
+    question: "Can ABDANIX integrate AI into websites or internal tools?",
+    answer:
+      "Yes. The team supports AI chat, workflow automation, search experiences, assistant features, and business process integrations where AI creates useful operational value.",
+  },
+  {
+    question: "Where is ABDANIX Solutions based?",
+    answer:
+      "ABDANIX Solutions is based in Rawalpindi and Islamabad, Pakistan, and works with both local and international clients.",
+  },
+  {
+    question: "How do I start a project with ABDANIX?",
+    answer:
+      "The fastest path is to contact the team through the website form, email, or WhatsApp and share your goals, timeline, and system requirements.",
+  },
+];
+
+export const servicesFaqs = [
+  {
+    question: "What services does ABDANIX Solutions offer?",
+    answer:
+      "ABDANIX offers website development, AI-integrated websites, mobile app development, CRM management systems, SEO optimization, custom software engineering, AI solutions, and social media support.",
+  },
+  {
+    question: "Can ABDANIX improve both SEO and AI answer visibility?",
+    answer:
+      "Yes. ABDANIX can improve technical SEO, metadata, schema, structured content, and direct-answer page copy so the website is easier for search engines and AI systems to understand.",
+  },
+  {
+    question: "Can ABDANIX improve an existing website or software product?",
+    answer:
+      "Yes. ABDANIX can modernize existing websites, improve performance, redesign workflows, add integrations, strengthen SEO, and extend internal software capabilities.",
+  },
+  {
+    question: "Does ABDANIX handle both frontend and backend development?",
+    answer:
+      "Yes. Engagements can include frontend experiences, backend systems, APIs, databases, automation layers, and deployment planning when the project requires a full product build.",
+  },
+  {
+    question: "Does ABDANIX provide support after launch?",
+    answer:
+      "Yes. Post-launch work can include maintenance, iterative improvements, analytics review, feature expansion, and operational support based on the agreed scope.",
+  },
+  {
+    question: "How is project scope defined?",
+    answer:
+      "Scope is typically defined during discovery and architecture, where the team aligns on goals, user flows, integrations, timelines, technical requirements, and commercial priorities.",
+  },
+];
+
+export const projectsFaqs = [
+  {
+    question: "What kinds of projects has ABDANIX delivered?",
+    answer:
+      "The portfolio includes enterprise CRM systems, support and ticketing platforms, real-time testing products, AI chat and automation systems, and mobile apps for social, service, and transport use cases.",
+  },
+  {
+    question: "Can ABDANIX build a similar platform for my company?",
+    answer:
+      "Yes. ABDANIX can adapt the delivery approach, workflow design, and technical stack to match your industry, goals, users, and integrations rather than duplicating a generic template.",
+  },
+  {
+    question: "Do portfolio projects represent real business use cases?",
+    answer:
+      "Yes. The showcased categories reflect practical business systems focused on operations, lead management, support, automation, bookings, and customer experience.",
+  },
+];
+
+export const contactFaqs = [
+  {
+    question: "What should I include in my project inquiry?",
+    answer:
+      "A strong inquiry includes your business goals, desired system or website, target users, timeline, current bottlenecks, and any integrations or platforms involved.",
+  },
+  {
+    question: "How quickly does ABDANIX respond?",
+    answer:
+      "The team aims to respond as quickly as possible during business hours and then guide you toward the most practical next step for discovery.",
+  },
+  {
+    question: "Can I contact ABDANIX through WhatsApp?",
+    answer:
+      "Yes. WhatsApp is available for direct communication, alongside email and the contact form on the website.",
   },
 ];
 
