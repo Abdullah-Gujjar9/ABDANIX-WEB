@@ -13,7 +13,7 @@ export default function AboutPage() {
         accent="ABDANIX Solutions"
         description="ABDANIX combines business systems thinking with practical engineering so digital products stay useful, scalable, and commercially aligned."
       />
-      <AboutSection showTeam />
+      <AboutSection />
       <CtaSection
         eyebrow="Build With Us"
         title="Need a team that thinks beyond"
