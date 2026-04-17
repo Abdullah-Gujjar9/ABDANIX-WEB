@@ -558,44 +558,37 @@ export function ProcessSection() {
 export function AboutSection({ showTeam = false }) {
   return (
     <>
-      <section className="section editorial-section" id="about">
-        <div className="container">
-          <div className="section-heading center reveal show">
-            <h2>Enterprise Thinking. <span className="accent-text">Operational Precision.</span></h2>
-            <p>ABDANIX combines engineering discipline with business strategy so organizations can deploy digital systems that are reliable, scalable, and commercially useful.</p>
-          </div>
-          <div className="grid about-points">
-            {aboutPoints.map((point) => (
-              <article className="about-card reveal show" key={point.title}>
-                <div className="icon-badge">{point.code}</div>
-                <h3>{point.title}</h3>
-                <p>{point.description}</p>
-              </article>
-            ))}
-          </div>
+       <section className="section editorial-section py-20" id="about">
+      <div className="container">
+
+        <div className="section-heading center reveal show max-w-3xl mx-auto">
+          <h2>
+            Enterprise Thinking.{" "}
+            <span className="accent-text">Operational Precision.</span>
+          </h2>
+          <p>
+            ABDANIX combines engineering discipline with business strategy so
+            organizations can deploy digital systems that are reliable,
+            scalable, and commercially useful.
+          </p>
         </div>
-      </section>
-      {showTeam ? (
-        <section className="section">
-          <div className="container">
-            <div className="section-heading center reveal show">
-              <div className="eyebrow"><span className="dot"></span> Team</div>
-              <h2>The people behind <span className="accent-text">ABDANIX</span></h2>
-              <p>Our team combines strategy, finance, operations, and engineering to keep delivery sharp and practical.</p>
-            </div>
-            <div className="grid team-grid">
-              {team.map((member) => (
-                <article className="card team-card reveal show" key={member.name}>
-                  <div className="team-avatar"><img src={member.image} alt={member.name} /></div>
-                  <h3>{member.name}</h3>
-                  <span className="team-role">{member.role}</span>
-                  <p>{member.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {aboutPoints.map((point) => (
+            <article
+              className="about-card reveal show text-center p-6 rounded-xl shadow-sm"
+              key={point.title}
+            >
+              <div className="icon-badge">{point.code}</div>
+              <h3>{point.title}</h3>
+              <p>{point.description}</p>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+     {showTeam && null}
     </>
   );
 }
